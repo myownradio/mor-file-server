@@ -6,8 +6,10 @@ require_once "core/firewall.php";
 const CACHE_DIR = "cache";
 const BUFFER_SIZE = 4096;
 
+error_log(FILTER_INPUT(INPUT_SERVER, "REQUEST_METHOD") . ": " . FILTER_INPUT(INPUT_SERVER, "REQUEST_URI"));
 
 switch (FILTER_INPUT(INPUT_SERVER, "REQUEST_METHOD")) {
+
 
     case 'POST':
         include "core/post.php";

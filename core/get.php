@@ -15,16 +15,6 @@ if (!file_exists($filename)) {
     exit();
 }
 
-error_log("File found! Redirecting to... /" . $filename);
 http_response_code(301);
+
 header("Location: /" . $filename);
-//http_response_code(200);
-//
-//$fh = fopen($filename, "r");
-//
-//while($data = fread($fh, BUFFER_SIZE)) {
-//    echo $data;
-//    flush();
-//}
-//
-//fclose($fh);
