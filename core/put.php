@@ -9,8 +9,6 @@ if (controlAccess() === false) {
     exit();
 }
 
-//ignore_user_abort(true);
-
 set_time_limit(0);
 
 $temp = CACHE_DIR . "/" . genUniqueName();
@@ -37,11 +35,6 @@ if ($counter <= 0) {
     http_response_code(413);
     unlink($temp);
 
-//} else if (connection_aborted()) {
-//
-//    error_log("Aborted by client");
-//    unlink($temp);
-//
 } else {
 
     $hash = hash_final($digest);
