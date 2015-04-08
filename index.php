@@ -13,6 +13,10 @@ switch (FILTER_INPUT(INPUT_SERVER, "REQUEST_METHOD")) {
         include "core/post.php";
         break;
 
+    case 'PUT':
+        include "core/put.php";
+        break;
+
     case 'DELETE':
         include "core/delete.php";
         break;

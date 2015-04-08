@@ -37,3 +37,14 @@ function getRequestPath() {
         return substr($uri, 1, $off - 1);
     }
 }
+
+function genUniqueName() {
+    $length = 16;
+    $chars = "abcdefghijklmnopqrstuvwxyz";
+    $random = "";
+    while ($length --) {
+        $random .= substr($chars, rand(0, strlen($chars) - 1), 1);
+    }
+    return $random;
+}
+
