@@ -5,6 +5,7 @@ require_once "core/firewall.php";
 
 const CACHE_DIR = "cache";
 const BUFFER_SIZE = 4096;
+const MAX_UPLOAD_SIZE = 250000000;
 
 error_log(
     FILTER_INPUT(INPUT_SERVER, "REQUEST_METHOD") . ": " .

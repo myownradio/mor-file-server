@@ -9,26 +9,39 @@ if (controlAccess() === false) {
     exit();
 }
 
-ignore_user_abort(true);
+//ignore_user_abort(true);
+
+set_time_limit(0);
 
 $temp = CACHE_DIR . "/" . genUniqueName();
 
 $fh = fopen("php://input", "r");
 $out = fopen($temp, "w");
 $digest = hash_init($algorithm);
+$counter = MAX_UPLOAD_SIZE;
 
-while (($data = fread($fh, 1024)) && (connection_aborted() == 0)) {
+while (($data = fread($fh, BUFFER_SIZE)) && ($counter > 0)) {
+
+    $counter -= strlen($data);
     hash_update($digest, $data);
     fwrite($out, $data);
+
 }
 
 fclose($out);
 fclose($fh);
 
-if (connection_aborted()) {
+if ($counter <= 0) {
 
-    unlink($out);
+    error_log("Request is too large");
+    http_response_code(413);
+    unlink($temp);
 
+//} else if (connection_aborted()) {
+//
+//    error_log("Aborted by client");
+//    unlink($temp);
+//
 } else {
 
     $hash = hash_final($digest);
