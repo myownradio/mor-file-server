@@ -5,7 +5,7 @@ $hash = getRequestPath();
 set_time_limit(0);
 
 if (strlen($hash) == 0) {
-    die(disk_free_space(getcwd() . CACHE_DIR));
+    die(disk_free_space(getcwd() . "/" . CACHE_DIR));
 }
 
 $filename = hashToFilename($hash);

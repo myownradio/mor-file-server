@@ -24,7 +24,7 @@ function createDirectoryByHash($path) {
  * @return string
  */
 function hashToPath($hash) {
-    return getcwd() . CACHE_DIR."/".substr($hash, 0, 1)."/".substr($hash, 1, 1);
+    return CACHE_DIR."/".substr($hash, 0, 1)."/".substr($hash, 1, 1);
 }
 
 function getRequestPath() {
