@@ -11,7 +11,7 @@ if (controlAccess() === false) {
 
 set_time_limit(0);
 
-$temp = CACHE_DIR . "/" . genUniqueName();
+$temp = getcwd() . CACHE_DIR . "/" . genUniqueName();
 
 $fh = fopen("php://input", "r");
 $out = fopen($temp, "w");
