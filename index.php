@@ -2,6 +2,8 @@
 
 require_once "core/functions.php";
 require_once "core/firewall.php";
+require_once "libs/FFprobe.php";
+require_once "libs/Config.php";
 
 const CACHE_DIR = "cache";
 const BUFFER_SIZE = 4096;
@@ -17,6 +19,10 @@ switch (FILTER_INPUT(INPUT_SERVER, "REQUEST_METHOD")) {
 
     case 'POST':
         include "core/post.php";
+        break;
+
+    case 'OPTIONS':
+        include "core/options.php";
         break;
 
     case 'PUT':
